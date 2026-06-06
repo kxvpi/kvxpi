@@ -1,0 +1,90 @@
+:root {
+    --bg: #071428; /* fondo oscuro profesional */
+    --card: #0e1b26; /* tarjeta oscura */
+    --accent: #4fb0ff; /* acento azul suave */
+    --muted: #9fb3c8; /* texto secundario */
+    --text: #e6f0f8; /* texto principal claro */
+    --texto-gris: #9fb3c8; /* compatibilidad con inline small */
+    --border: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.02);
+    --primario: #4fb0ff;
+}
+
+* { box-sizing: border-box; }
+body {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg,#05131b 0%, var(--bg) 100%);
+    color: var(--text);
+    margin: 0;
+    padding: 28px 18px;
+    -webkit-font-smoothing:antialiased;
+}
+
+.container { max-width: 1000px; margin: 0 auto; }
+
+header { padding: 28px 0; border-bottom: 1px solid var(--border); margin-bottom: 26px }
+.brand { display:flex; align-items:center; gap:14px }
+.brand .logo { font-family: 'Fira Code', monospace; font-weight:600; color:var(--accent); font-size:1.1rem }
+.brand .title { font-size:1.6rem; margin:0; color:var(--text) }
+.sub { color:var(--muted); margin-top:6px }
+
+.info-personal { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px }
+.dato { background:transparent; color:var(--text); padding:8px 12px; border-radius:8px; border:1px solid var(--border); font-size:0.9rem }
+a.dato { text-decoration:none }
+
+.seccion { background:var(--card); padding:20px; border-radius:10px; margin-bottom:18px; border:1px solid var(--border); box-shadow: 0 6px 18px rgba(2,8,15,0.45) }
+h2 { margin:0 0 12px; color:var(--accent); font-family:'Fira Code', monospace; font-size:1.05rem }
+
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px }
+.tag { display:inline-block; background:transparent; color:var(--muted); padding:6px 8px; border-radius:6px; border:1px solid var(--border); font-size:0.85rem }
+
+.historia-item { display:flex; gap:16px; align-items:flex-start; padding:14px; border-radius:8px; border:1px solid var(--border); background:linear-gradient(180deg,#071826,#0e2430) }
+.server-img { width:64px; height:64px; object-fit:cover; border-radius:6px; border:1px solid rgba(255,255,255,0.03) }
+.no-img-placeholder { width:64px; height:64px; display:flex; align-items:center; justify-content:center; background:#08212b; color:var(--muted); border-radius:6px; border:1px solid var(--border) }
+
+.puesto { color:var(--accent); font-weight:600; display:block; margin-bottom:6px }
+.descripcion { color:var(--muted); margin:6px 0 0 }
+
+footer { text-align:center; margin-top:24px; color:var(--muted); font-size:0.9rem }
+
+@media (max-width:700px) { .historia-item { flex-direction:row } .brand { flex-direction:column; align-items:flex-start } }
+/* Top navigation (in example style) */
+.top-nav { display:flex; gap:18px; justify-content:center; padding:12px 0; margin-bottom:18px }
+.top-nav a { color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; border:1px solid transparent }
+.top-nav a[data-page-link='trayectoria'], .top-nav a:hover { color:var(--text); background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03) }
+
+/* Timeline styling similar to the example */
+.career-timeline { position:relative; padding-left:28px }
+.career-timeline::before { content:''; position:absolute; left:12px; top:8px; bottom:8px; width:2px; background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)) }
+.career-point { position:relative; margin:18px 0; padding-left:18px }
+.career-point .career-dot { position:absolute; left:-6px; top:12px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid rgba(0,0,0,0.2) }
+.career-point .career-content { display:flex; gap:12px; align-items:center }
+.career-point img { width:64px; height:64px; object-fit:cover; border-radius:8px }
+.career-point h2 { margin:0; font-size:1.05rem; color:var(--text) }
+
+/* Hero / Header refinements */
+.hero { display:flex; flex-direction:column; gap:12px; padding:22px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:10px }
+.brand { display:flex; gap:14px; align-items:center }
+.brand .logo { width:56px; height:56px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--accent),#7bd3ff); color:#071428; font-weight:800; border-radius:10px; font-family:'Fira Code', monospace; font-size:1.25rem; box-shadow: 0 6px 18px rgba(11,23,34,0.6) }
+.brand .title { margin:0; font-size:1.5rem }
+.hero .sub { margin:4px 0 0; color:var(--muted) }
+
+/* Card and button utilities */
+.card { background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); border-radius:10px; padding:14px; border:1px solid var(--border); box-shadow: 0 8px 24px rgba(2,8,15,0.5) }
+.btn { display:inline-block; padding:8px 12px; border-radius:8px; background:var(--accent); color:#042532; font-weight:700; text-decoration:none; transition:transform .12s ease, box-shadow .12s ease }
+.btn:hover { transform:translateY(-2px); box-shadow: 0 8px 18px rgba(79,176,255,0.12) }
+
+/* Links and subtle hover */
+a { color:var(--accent); }
+a:hover { text-decoration:underline }
+
+/* Projects grid refinement */
+.skills-grid > div { text-align:center }
+.skills-grid img { transition:transform .18s ease, box-shadow .18s ease }
+.skills-grid img:hover { transform:translateY(-6px) scale(1.02); box-shadow: 0 12px 30px rgba(11,23,34,0.45) }
+
+/* Small responsive tweaks */
+@media (max-width:700px) {
+    .brand .logo { width:48px; height:48px }
+    .skills-grid { grid-template-columns:repeat(2,1fr) }
+}

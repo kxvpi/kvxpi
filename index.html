@@ -7,181 +7,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --fondo: #000000;
-            --tarjeta: rgba(0, 15, 0, 0.85); 
-            --primario: #00ff41; 
-            --azul-dev: #008f11; 
-            --texto: #d0ffd0; 
-            --texto-gris: #00a000;
-            --glow: rgba(0, 255, 65, 0.3);
-            --borde: rgba(0, 255, 65, 0.2);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--fondo);
-            color: var(--texto);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-        }
-
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        header {
-            padding: 50px 0 30px;
-            border-bottom: 1px solid var(--borde);
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px var(--glow);
-        }
-
-        h1 { margin: 0; font-size: 2.8rem; color: var(--primario); font-family: 'Fira Code', monospace; }
-        .sub { font-size: 1.1rem; color: var(--primario); margin-top: 5px; opacity: 0.8; }
-
-        .info-personal {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .dato {
-            background: rgba(0, 255, 65, 0.05);
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            border: 1px solid var(--borde);
-            text-decoration: none;
-            color: var(--primario);
-            font-family: 'Fira Code', monospace;
-            transition: all 0.3s ease;
-        }
-
-        .dato:hover {
-            background: var(--primario);
-            color: #000;
-            box-shadow: 0 0 20px var(--primario);
-        }
-
-        .seccion {
-            background: var(--tarjeta);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid var(--borde);
-            box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
-            backdrop-filter: blur(4px);
-        }
-
-        h2 { font-size: 1.4rem; color: var(--primario); margin-top: 0; font-family: 'Fira Code', monospace; border-bottom: 1px solid var(--borde); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .tag {
-            background: rgba(0, 255, 65, 0.1);
-            color: var(--primario);
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.75rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            display: inline-block;
-            border: 1px solid var(--borde);
-            font-family: 'Fira Code', monospace;
-        }
-
-        .historia-item {
-            display: flex;
-            gap: 20px;
-            border-left: 3px solid var(--azul-dev); 
-            background: rgba(0, 255, 65, 0.02);
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.4s ease;
-        }
-
-        .historia-item:hover {
-            background: rgba(0, 255, 65, 0.08);
-            border-left: 3px solid var(--primario);
-            transform: translateX(10px);
-        }
-
-        .server-img, .no-img-placeholder {
-            width: 60px; height: 60px;
-            border-radius: 4px;
-            flex-shrink: 0;
-            border: 1px solid var(--borde);
-        }
-
-        .no-img-placeholder {
-            background: #001a00;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.6rem;
-            color: var(--primario);
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .puesto { color: var(--primario); font-weight: bold; font-size: 0.85rem; font-family: 'Fira Code', monospace; text-transform: uppercase; display: block; margin-bottom: 5px;}
-        h3 { margin: 0; font-size: 1.2rem; color: #fff; }
-        
-        footer { text-align: center; padding: 40px; color: var(--texto-gris); font-family: 'Fira Code', monospace; font-size: 0.8rem; }
-        strong { color: var(--primario); }
+                --bg: #071428; /* fondo oscuro profesional */
+                --card: #0e1b26; /* tarjeta oscura */
+                --accent: #4fb0ff; /* acento azul suave */
+                --primario: #4fb0ff;
+                --muted: #9fb3c8; /* texto secundario */
+                --text: #e6f0f8; /* texto principal claro */
+                --texto-gris: #9fb3c8; /* compatibilidad con inline small */
+                --border: rgba(255,255,255,0.04);
+                --glass: rgba(255,255,255,0.02);
     </style>
 </head>
+        <link rel="stylesheet" href="css/estilos.css">
 <body>
 
-    <canvas id="matrix-canvas"></canvas>
+    <!-- canvas removed: matriz estilo hacker eliminado para diseño profesional -->
+
+    <nav class="top-nav" aria-label="Navegacion principal">
+        <a data-page-link='inicio' href='./'>Inicio</a>
+        <a data-page-link='trayectoria' href='./trayectoria/'>Trayectoria</a>
+        <a data-page-link='proyectos' href='./proyectos/'>Proyectos</a>
+        <a data-page-link='sobre-mi' href='./sobre_mi/'>Sobre mi</a>
+        <a data-page-link='contacto' href='./contacto/'>Contacto</a>
+    </nav>
 
     <div class="container">
-        <header>
-            <h1><small style="font-size: 1rem; color: var(--texto-gris);">[@kavaxpii]</small></h1>
-            <p class="sub">> Creador de Plugins & Network Developer especializado en BoxPvP/Lobbys</p>
-            
-            <div class="info-personal">
+        <header class="hero card">
+            <div class="brand">
+                <div class="logo">K</div>
+                <div>
+                    <h1 class="title">kavaxpii</h1>
+                    <p class="sub">Creador de Plugins & Network Developer especializado en BoxPvP / Lobbys / Builds</p>
+                </div>
+            </div>
+
+            <div class="info-personal" style="margin-top:12px">
                 <span class="dato">LOC: Chile</span>
-                <span class="dato">MC: kvxpi [Premiun]</span>
+                <span class="dato">MC: kavaxpii</span>
                 <span class="dato">DC: kavaxpii</span>
-                <a href="mailto:jeicobyamil8@gmail.com" class="dato">MAIL: jeicobyamil8@gmail.com</a>
+                <a href="mailto:jeicobyamil8@gmail.com" class="dato">jeicobyamil8@gmail.com</a>
             </div>
         </header>
 
-        <section class="seccion">
+        <section id="about" class="seccion">
             <h2>./Sobre_mi</h2>
             <p>Ejecutando perfil profesional... Soy un desarrollador y staff con amplia experiencia en redes de Minecraft. Mi especialidad es la creación y optimización de entornos <strong>BoxPvP</strong>, <strong>Lobbys</strong> y <strong>Rangos Globales/ Baneos Globales</strong>. Experto en <strong>configuración avanzada de redes</strong> (Bungee/Velocity) y desarrollo de soluciones técnicas bajo entornos de alta carga de usuarios.</p>
         </section>
 
-        <section class="seccion">
-            <h2>./Habilidades_Tecnicas</h2>
+        <section id="skills" class="seccion">
+            <h2>/Habilidades_Tecnicas</h2>
             <div class="skills-grid">
                 <div>
                     <h4 style="color: var(--primario); font-size: 0.8rem;">[ESPECIALIDAD_MODAL]</h4>
-                    <span class="tag">BoxPvP</span> <span class="tag">Lobbys</span> <span class="tag">Survivals</span> <span class="tag">Full Pvp</span>
+                    <span class="tag">BoxPvP</span> <span class="tag">Lobbys</span> <span class="tag">fullpvp</span>
                 </div>
                 <div>
                     <h4 style="color: var(--primario); font-size: 0.8rem;">[PLUGINS_DEV_CONFIG]</h4>
-                    <span class="tag">DeluxeHub</span> <span class="tag">Akropolis</span> <span class="tag">ItemExecutable</span> <span class="tag">LuckPerms</span> <span class="tag">TAB</span> <span class="tag">Skript</span>
+                    <span class="tag">DeluxeHub</span> <span class="tag">Akropolis</span> <span class="tag">ItemExecutable</span> <span class="tag">LuckPerms</span> <span class="tag">TAB</span> <span class="tag">Skript</span> <span class="tag">(Todos)</span>
                 </div>
                 <div>
                     <h4 style="color: var(--primario); font-size: 0.8rem;">[NETWORK_INFRA]</h4>
@@ -189,15 +71,17 @@
                 </div>
                 <div>
                     <h4 style="color: var(--primario); font-size: 0.8rem;">[LANGUAGES]</h4>
-                    <span class="tag">Java</span> <span class="tag">Python</span> <span class="tag">HTML/CSS</span> <span class="tag">Node.js</span>
+                    <span class="tag">Java</span> <span class="tag">Python</span> <span class="tag">HTML</span> <span class="tag">CSS</span> <span class="tag">Node.js</span>
                 </div>
             </div>
         </section>
 
-        <section class="seccion">
+        <section id="trayectoria" class="seccion">
             <h2>./Experiencia_Detallada</h2>
 
-            <div class="historia-item">
+            <div class="career-timeline">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/Mineblash.png" alt="Mineblash" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">MINE<br>BLASH</div>
                 <div class="contenido-exp">
@@ -205,9 +89,10 @@
                     <span class="puesto">Status: Dev & Founder (Ex-staff)</span>
                     <p class="descripcion">Entré como socio fundador apoyando en la parte económica y técnica (configs). A día de hoy sigo manteniendo el servidor como Developer principal.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/pringle.png" alt="Pringler" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">PRING</div>
                 <div class="contenido-exp">
@@ -215,9 +100,10 @@
                     <span class="puesto">Status: Developer (Ex-staff)</span>
                     <p class="descripcion">Me aceptaron por mi capacidad técnica tras revisar mi portafolio. Actualmente gestiono las configuraciones y resuelvo tickets técnicos.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/keni.png" alt="Kenibox" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">KENI</div>
                 <div class="contenido-exp">
@@ -225,9 +111,10 @@
                     <span class="puesto">Status: Administrador (Ex-Staff)</span>
                     <p class="descripcion">Ascenso meteórico de Helper a Admin. Realicé más de 1,432 baneos en 2 meses, encargándome de revisar sanciones y apoyar en nuevas modalidades.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/nexu.webp" alt="Nexusmc" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">NEXUS</div>
                 <div class="contenido-exp">
@@ -235,18 +122,20 @@
                     <span class="puesto">Status: Developer (Ex-staff)</span>
                     <p class="descripcion">He ayudado trabajando en el arreglo de bugs y creación de selectores de modalidades. Aporto soluciones técnicas constantes al equipo.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <div class="no-img-placeholder">NUBE<br>MC</div>
                 <div class="contenido-exp">
                     <h3>NubeMc</h3>
                     <span class="puesto">Status: Developer (Ex-staff)</span>
                     <p class="descripcion">Salida voluntaria debido a mal ambiente laboral y falta de ética del fundador. Me sirvió como experiencia para aprender a proteger mi trabajo.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/memenight.png" alt="MineNight" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">NIGHT</div>
                 <div class="contenido-exp">
@@ -254,19 +143,21 @@
                     <span class="puesto">Status: Developer (Ex-staff)</span>
                     <p class="descripcion">3 meses de trabajo sólido en desarrollo técnico hasta una salida injustificada por parte del dueño. Mantengo el conocimiento adquirido en este tiempo.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
-                <img src="img/minelux.png" alt="MineLux"class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
+                <img src="img/minelux.png" alt="MineLux" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">LUX</div>
                 <div class="contenido-exp">
                     <h3>Minelux</h3>
                     <span class="puesto">Status: Developer / Owner (Ex-staff)</span>
                     <p class="descripcion">Comenze como Developer y me convertí en Owner. Aporté soluciones técnicas y lideré el desarrollo del servidor.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/valky.png" alt="Valkyrian" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">VALKYRIAN</div>
                 <div class="contenido-exp">
@@ -274,9 +165,10 @@
                     <span class="puesto">Status: Developer </span>
                     <p class="descripcion">Desarrollo de configuraciones personalizados para Valkyrian, incluyendo sistemas de rangos globales y gestión de plugins.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="historia-item">
+            <article class="historia-item career-point" data-timeline-node>
+                <span class="career-dot" aria-hidden="true"></span>
                 <img src="img/minepet.png" alt="MinePet" class="server-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
                 <div class="no-img-placeholder" style="display:none">MinePet</div>
                 <div class="contenido-exp">
@@ -284,42 +176,16 @@
                 <span class="puesto">Status: Builder</span>
                 <p class="descripcion">Desarrollo de mapas y estructuras personalizadas, adaptadas completamente a los requisitos y preferencias del servidor.</p>
     </div>
-</div>
+</article>
+            </div>
 
         <footer>
-            Instagram: @Kavaxpi - 2026
-        </footer>
+                Instagram: @Kavaxpi - 2026
+            </footer>
+
+        <script src="js/main.js" defer></script>
     </div>
 
-    <script>
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const words = ['java', 'boxpvp', 'network', 'kavaxpii', '01', 'system', 'dev', 'config'];
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = [];
-        for (let x = 0; x < columns; x++) { drops[x] = 1; }
-
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#00ff41';
-            ctx.font = fontSize + 'px monospace';
-            for (let i = 0; i < drops.length; i++) {
-                const text = words[Math.floor(Math.random() * words.length)];
-                ctx.fillText(text, i * fontSize * 3, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(draw, 50);
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    <!-- Matrix script removed -->
 </body>
-</html> 
+</html>
