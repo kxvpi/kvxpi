@@ -43,7 +43,9 @@
             margin: 0;
             color: var(--text);
             background:
-                linear-gradient(180deg, rgba(12, 14, 17, 0.98), rgba(18, 22, 26, 0.96) 44%, #0c0e11 100%),
+                radial-gradient(circle at 78% 8%, rgba(241, 174, 71, 0.12), transparent 26%),
+                radial-gradient(circle at 12% 24%, rgba(49, 208, 170, 0.1), transparent 30%),
+                linear-gradient(180deg, #0d1113 0%, #111719 48%, #0b0e10 100%),
                 var(--bg);
             font-family: "Inter", system-ui, sans-serif;
             line-height: 1.6;
@@ -171,13 +173,23 @@
             align-items: flex-end;
             padding: 112px 0 42px;
             position: relative;
-            background-image:
-                linear-gradient(90deg, rgba(9, 11, 14, 0.96) 0%, rgba(9, 11, 14, 0.84) 44%, rgba(9, 11, 14, 0.46) 100%),
-                linear-gradient(0deg, #0c0e11 0%, rgba(12, 14, 17, 0) 34%),
-                url("img/imagen.png");
-            background-size: cover;
-            background-position: center;
+            background:
+                linear-gradient(90deg, rgba(9, 12, 14, 0.8), transparent 70%),
+                radial-gradient(circle at 76% 38%, rgba(49, 208, 170, 0.15), transparent 24%);
             overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: min(48vw, 620px);
+            aspect-ratio: 1;
+            right: -10vw;
+            top: 12%;
+            border: 1px solid rgba(49, 208, 170, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 0 28px rgba(49, 208, 170, 0.025), 0 0 0 56px rgba(241, 174, 71, 0.025);
+            pointer-events: none;
         }
 
         .hero::after {
@@ -185,13 +197,14 @@
             position: absolute;
             inset: auto 0 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(241, 174, 71, 0.5), rgba(49, 208, 170, 0.36), transparent);
+            background: linear-gradient(90deg, transparent, rgba(241, 174, 71, 0.6), rgba(49, 208, 170, 0.4), transparent);
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 760px;
+            padding: 34px 0;
         }
 
         .eyebrow {
@@ -228,6 +241,7 @@
 
         .hero-name {
             color: var(--accent-2);
+            text-shadow: 0 0 32px rgba(49, 208, 170, 0.18);
         }
 
         .hero-text {
@@ -352,7 +366,8 @@
         }
 
         .profile-grid,
-        .skills-grid {
+        .skills-grid,
+        .plugin-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 18px;
@@ -360,6 +375,7 @@
 
         .profile-card,
         .skill-card,
+        .plugin-card,
         .work-card,
         .review-card,
         .experience-card {
@@ -378,6 +394,7 @@
 
         .profile-card:hover,
         .skill-card:hover,
+        .plugin-card:hover,
         .work-card:hover,
         .review-card:hover,
         .experience-card:hover {
@@ -465,6 +482,57 @@
         .review-card {
             overflow: hidden;
             transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+
+        .plugin-card {
+            display: flex;
+            min-height: 260px;
+            flex-direction: column;
+            padding: 22px;
+            transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+
+        .plugin-card .icon-box {
+            color: var(--accent);
+            border-color: rgba(241, 174, 71, 0.3);
+            background: rgba(241, 174, 71, 0.08);
+        }
+
+        .plugin-card .icon-box img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .plugin-card p {
+            flex: 1;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .plugin-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 42px;
+            margin-top: 20px;
+            border: 1px solid rgba(241, 174, 71, 0.34);
+            border-radius: var(--radius);
+            color: #ffe0a8;
+            background: rgba(241, 174, 71, 0.1);
+            font-size: 0.86rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .plugin-link:hover,
+        .plugin-link:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            background: rgba(241, 174, 71, 0.18);
+            outline: none;
         }
 
         .work-card.featured {
@@ -605,6 +673,12 @@
             white-space: nowrap;
         }
 
+        .role i,
+        .status i {
+            width: 1em;
+            text-align: center;
+        }
+
         .status {
             border-color: rgba(255, 255, 255, 0.14);
             color: var(--text);
@@ -715,7 +789,8 @@
             }
 
             .profile-grid,
-            .skills-grid {
+            .skills-grid,
+            .plugin-grid {
                 grid-template-columns: 1fr 1fr;
             }
 
@@ -782,6 +857,7 @@
             .hero-meta,
             .profile-grid,
             .skills-grid,
+            .plugin-grid,
             .work-grid {
                 grid-template-columns: 1fr;
             }
@@ -847,6 +923,7 @@
             <div class="nav-links" id="nav-links">
                 <a href="#perfil"><i class="fa-solid fa-user-gear"></i> Perfil</a>
                 <a href="#habilidades"><i class="fa-solid fa-code"></i> Habilidades</a>
+                <a href="#plugins"><i class="fa-solid fa-puzzle-piece"></i> Plugins</a>
                 <a href="#trabajos"><i class="fa-solid fa-image"></i> Trabajos</a>
                 <a href="#experiencia"><i class="fa-solid fa-server"></i> Experiencia</a>
                 <a href="#contacto"><i class="fa-solid fa-paper-plane"></i> Contacto</a>
@@ -927,6 +1004,8 @@
                         <h3>Staff y operaciones</h3>
                         <p>Apoyo en moderacion, gestion de sanciones, revision de bugs y soporte tecnico para equipos de administracion.</p>
                     </article>
+                </div>
+            </div>
         </section>
 
         <section class="section" id="habilidades">
@@ -1042,7 +1121,79 @@
                             <h3>Mineblash</h3>
                             <p>Socio fundador con apoyo economico y tecnico. Actualmente mantengo configuraciones y desarrollo como Developer principal.</p>
                         </div>
-                        <span class="role"><i class="fa-solid fa-crown"></i> Dev &amp; Founder</span>
+                        <span class="role"><i class="fa-solid fa-crown"></i> Founder</span>
+                    </article>
+
+                    <article class="experience-card reveal">
+                        <div class="server-logo">
+                            <img src="img/minelux.png" alt="Minelux" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">LUX</span>
+                        </div>
+                        <div>
+                            <h3>Minelux</h3>
+                            <p>Inicio como Developer y posterior paso a Owner, liderando decisiones tecnicas y desarrollo del servidor.</p>
+                        </div>
+                        <span class="role"><i class="fa-solid fa-user-tie"></i> Owner</span>
+                    </article>
+
+                    <article class="experience-card reveal">
+                        <div class="server-logo">
+                            <img src="img/nexu.webp" alt="NexusMC" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">NEXUS</span>
+                        </div>
+                        <div>
+                            <h3>NexusMC</h3>
+                            <p>Correccion de bugs, creacion de selectores de modalidades y soporte tecnico constante para el equipo.</p>
+                        </div>
+                        <span class="role"><i class="fa-solid fa-code"></i> Developer</span>
+                    </article>
+
+                    <article class="experience-card reveal">
+                        <div class="server-logo">
+                            <img src="img/memenight.png" alt="MineNight" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">NIGHT</span>
+                        </div>
+                        <div>
+                            <h3>MineNight</h3>
+                            <p>Tres meses de trabajo tecnico, configuraciones y apoyo operativo para mejorar estabilidad y experiencia del servidor.</p>
+                        </div>
+                        <span class="role"><i class="fa-solid fa-code"></i> Developer</span>
+                    </article>
+
+                    <article class="experience-card reveal">
+                        <div class="server-logo">
+                            <img src="img/valky.png" alt="Valkyrian" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">VALK</span>
+                        </div>
+                        <div>
+                            <h3>Valkyrian</h3>
+                            <p>Desarrollo de configuraciones personalizadas, sistemas de rangos globales y gestion de plugins.</p>
+                        </div>
+                        <span class="role"><i class="fa-solid fa-code"></i> Developer</span>
+                    </article>
+
+                    <article class="experience-card reveal">
+                        <div class="server-logo">
+                            <img src="img/minepet.png" alt="MinePet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">PET</span>
+                        </div>
+                        <div>
+                            <h3>MinePet</h3>
+                            <p>Desarrollo de mapas y configuraciones personalizadas adaptadas a los requisitos del servidor.</p>
+                        </div>
+                        <span class="role"><i class="fa-solid fa-code"></i> Developer</span>
+                    </article>
+
+                    <article class="experience-card reveal">
+                        <div class="server-logo">
+                            <img src="img/eskmc.png" alt="EskMC" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">ESK<br>MC</span>
+                        </div>
+                        <div>
+                            <h3>EskMC</h3>
+                            <p>Developer enfocado en la configuracion de rangos globales, organizacion de la jerarquia y apoyo en el desarrollo de modalidades.</p>
+                        </div>
+                        <span class="role"><i class="fa-solid fa-code"></i> Developer</span>
                     </article>
 
                     <article class="experience-card reveal">
@@ -1059,30 +1210,6 @@
 
                     <article class="experience-card reveal">
                         <div class="server-logo">
-                            <img src="img/nexu.webp" alt="NexusMC" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                            <span class="fallback">NEXUS</span>
-                        </div>
-                        <div>
-                            <h3>NexusMC</h3>
-                            <p>Correccion de bugs, creacion de selectores de modalidades y soporte tecnico constante para el equipo.</p>
-                        </div>
-                        <span class="role"><i class="fa-solid fa-wrench"></i> Developer</span>
-                    </article>
-
-                    <article class="experience-card reveal">
-                        <div class="server-logo">
-                            <img src="img/memenight.png" alt="MineNight" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                            <span class="fallback">NIGHT</span>
-                        </div>
-                        <div>
-                            <h3>MineNight</h3>
-                            <p>Tres meses de trabajo tecnico, configuraciones y apoyo operativo para mejorar estabilidad y experiencia del servidor.</p>
-                        </div>
-                        <span class="role"><i class="fa-solid fa-moon"></i> Developer</span>
-                    </article>
-
-                    <article class="experience-card reveal">
-                        <div class="server-logo">
                             <img src="img/minesplash.png" alt="MineSplash" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                             <span class="fallback">SPLASH</span>
                         </div>
@@ -1090,43 +1217,19 @@
                             <h3>MineSplash</h3>
                             <p>SrMod enfocado en moderar dentro del servidor, soporte a la comunidad y gestion tickets.</p>
                         </div>
-                        <span class="role"><i class="fa-solid fa-shield-halved"></i> Sr Mod</span>
+                        <span class="role"><i class="fa-solid fa-shield"></i> Sr Mod</span>
                     </article>
 
                     <article class="experience-card reveal">
                         <div class="server-logo">
-                            <img src="img/minelux.png" alt="Minelux" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                            <span class="fallback">LUX</span>
+                            <img src="img/mineback.png" alt="Mineback" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                            <span class="fallback">BACK</span>
                         </div>
                         <div>
-                            <h3>Minelux</h3>
-                            <p>Inicio como Developer y posterior paso a Owner, liderando decisiones tecnicas y desarrollo del servidor.</p>
+                            <h3>Mineback</h3>
+                            <p>Trabajo como Helper, atendiendo tickets de Discord y gestionando muteos dentro de Minecraft para mantener una comunidad ordenada.</p>
                         </div>
-                        <span class="role"><i class="fa-solid fa-user-tie"></i> Dev / Owner</span>
-                    </article>
-
-                    <article class="experience-card reveal">
-                        <div class="server-logo">
-                            <img src="img/valky.png" alt="Valkyrian" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                            <span class="fallback">VALK</span>
-                        </div>
-                        <div>
-                            <h3>Valkyrian</h3>
-                            <p>Desarrollo de configuraciones personalizadas, sistemas de rangos globales y gestion de plugins.</p>
-                        </div>
-                        <span class="role"><i class="fa-solid fa-gem"></i> Developer</span>
-                    </article>
-
-                    <article class="experience-card reveal">
-                        <div class="server-logo">
-                            <img src="img/minepet.png" alt="MinePet" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                            <span class="fallback">PET</span>
-                        </div>
-                        <div>
-                            <h3>MinePet</h3>
-                            <p>Desarrollo de mapas y Configuraciones personalizadas adaptadas a los requisitos del servidor.</p>
-                        </div>
-                        <span class="role"><i class="fa-solid fa-hammer"></i> Builder / Developer </span>
+                        <span class="role"><i class="fa-solid fa-headset"></i> Helper</span>
                     </article>
 
                     <article class="experience-card reveal">
@@ -1138,10 +1241,48 @@
                             <h3>Chowbox</h3>
                             <p>Enfocado en la administracion de servidores y aunque fue poco mi tiempo en ese servidor aprendi muchas cosas.</p>
                         </div>
-                        <span class="role"><i class="fa-solid fa-hammer"></i> Helper</span>
+                        <span class="role"><i class="fa-solid fa-headset"></i> Helper</span>
                     </article>
                 </div>
                 <h3> Se que son pocos o no muy conocidos pero se les pide que se conformen ya que soy muy poco conocido </h3>
+            </div>
+        </section>
+
+        <section class="section" id="plugins">
+            <div class="wrap">
+                <div class="section-head reveal">
+                    <div>
+                        <span class="section-label"><i class="fa-solid fa-puzzle-piece"></i> Plugins</span>
+                        <h2>Herramientas creadas para servidores Minecraft.</h2>
+                    </div>
+                    <p class="section-intro">
+                        Plugins propios para mejorar eventos, utilidad y experiencia dentro de una network.
+                        Consulta los recursos disponibles o revisa los próximos lanzamientos.
+                    </p>
+                </div>
+
+                <div class="plugin-grid">
+                    <article class="plugin-card reveal">
+                        <div class="icon-box"><img src="img/totem.png" alt="" aria-hidden="true"></div>
+                        <h3>KavaTotems</h3>
+                        <p>Sistema de práctica de popeo de totems con inventarios infinitos y totems aleatorios. Incluye inventario lleno y velocidades configurables, desde más lento hasta más rápido.</p>
+                        <a class="plugin-link" href="proximamente.html"><i class="fa-solid fa-clock"></i> Próximamente</a>
+                    </article>
+
+                    <article class="plugin-card reveal">
+                        <div class="icon-box"><i class="fa-solid fa-calendar-days"></i></div>
+                        <h3>KavaEvents</h3>
+                        <p>Sistema de eventos PvP automatizados y aleatorios, con tiempos, duración, recompensas y mensajes configurables. Incluye cuenta regresiva, PlaceholderAPI, colores HEX, recarga en vivo y control manual.</p>
+                        <a class="plugin-link" href="https://builtbybit.com/resources/kavaevents-events-plugins.115622/" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver plugin</a>
+                    </article>
+
+                    <article class="plugin-card reveal">
+                        <div class="icon-box"><img src="img/cofre.png" alt="" aria-hidden="true"></div>
+                        <h3>KavaChest</h3>
+                        <p>Crea cofres ilimitados con recompensas configurables y probabilidades del 0.1% al 100%; por defecto, cada ítem tiene 100%. Incluye soporte para cabezas Base64, lore, encantamientos, idiomas ES/EN, respawn configurable, animación de TNT y reparto de loot entre cofres.</p>
+                        <a class="plugin-link" href="proximamente.html"><i class="fa-solid fa-clock"></i> Próximamente</a>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -1202,7 +1343,7 @@
                         </p>
                     </div>
                     <div class="contact-actions">
-                        <a class="btn" href="mailto:jeicobyamil8@gmail.com">
+                        <a class="btn" href="mailto:kavaxpidev@gmail.com">
                             <i class="fa-solid fa-envelope"></i>
                             Email
                         </a>
@@ -1221,7 +1362,7 @@
     </main>
 
     <footer>
-        <div class="wrap">Chile - Network Developer - 2026</div>
+        <div class="wrap">Chile - Config Full stack - 2026</div>
     </footer>
 
     <div class="toast" role="status" aria-live="polite" aria-atomic="true">Discord copiado: kavaxpii</div>
@@ -1271,7 +1412,7 @@
                         window.setTimeout(() => toast.classList.remove("show"), 2200);
                     }
                 } catch (error) {
-                    window.location.href = "mailto:kavaxpidev@gmail.com";
+                    window.location.href = "mailto:jeicobyamil8@gmail.com";
                 }
             });
         });
